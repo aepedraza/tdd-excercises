@@ -24,4 +24,11 @@ class FizzBuzzCalculatorTest {
 
         assertEquals(MULTIPLE_OF_3_EXPECTED_RESULT, result);
     }
+
+    @Test
+    void givenMultipleOfThreeAsInput_thenReturnFizzString() {
+        for (int input = 3; input <= 30; input += 3) {
+            assertEquals(MULTIPLE_OF_3_EXPECTED_RESULT, underTest.fizzBuzz(input));
+        }
+    }
 }
