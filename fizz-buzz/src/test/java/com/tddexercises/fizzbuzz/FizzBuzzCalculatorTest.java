@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FizzBuzzCalculatorTest {
 
-    private static final String EMPTY_STRING = "";
+    private static final String DEFAULT_EXPECTED_RESULT = "";
+    private static final String MULTIPLE_OF_3_EXPECTED_RESULT = "Fizz";
 
     private final FizzBuzzCalculator underTest = new FizzBuzzCalculator();
 
@@ -14,13 +15,13 @@ class FizzBuzzCalculatorTest {
     void givenZeroAsInput_whenCalculateFizzBuzz_thenReturnEmptyString() {
         String result = underTest.fizzBuzz(0);
 
-        assertEquals(EMPTY_STRING, result);
+        assertEquals(DEFAULT_EXPECTED_RESULT, result);
     }
 
     @Test
     void givenThreeAsInput_thenReturnFizzString() {
         String result = underTest.fizzBuzz(3);
 
-        assertEquals("Fizz", result);
+        assertEquals(MULTIPLE_OF_3_EXPECTED_RESULT, result);
     }
 }
