@@ -6,10 +6,14 @@ public class FizzBuzzCalculator {
     private static final String EMPTY_STRING_DEFAULT_VALUE = "";
 
     public String fizzBuzz(int input) {
-        if (input > 0 && input % 3 == 0) {
+        if (matchesFizzCondition(input)) {
             return FIZZ_VALUE;
         }
 
         return EMPTY_STRING_DEFAULT_VALUE;
+    }
+
+    private boolean matchesFizzCondition(int input) {
+        return input > 0 && input % 3 == 0;
     }
 }
