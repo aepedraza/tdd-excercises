@@ -16,4 +16,11 @@ class FizzBuzzCalculatorTest {
 
         assertEquals(EMPTY_STRING, result);
     }
+
+    @Test
+    void givenThreeAsInput_thenReturnFizzString() {
+        String result = underTest.fizzBuzz(3);
+
+        assertEquals("Fizz", result);
+    }
 }
