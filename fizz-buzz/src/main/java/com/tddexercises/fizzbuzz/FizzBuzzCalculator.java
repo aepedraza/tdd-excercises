@@ -11,7 +11,7 @@ public class FizzBuzzCalculator {
             return FIZZ_VALUE;
         }
 
-        if (input == 5) {
+        if (matchesBuzzCondition(input)) {
             return BUZZ_VALUE;
         }
 
@@ -20,5 +20,9 @@ public class FizzBuzzCalculator {
 
     private boolean matchesFizzCondition(int input) {
         return input > 0 && input % 3 == 0;
+    }
+
+    private boolean matchesBuzzCondition(int input) {
+        return input > 0 && input % 5 == 0;
     }
 }
