@@ -10,6 +10,18 @@ public class FizzBuzzCalculator {
     private static final int FIZZ_MOD_DIVISOR = 3;
     private static final int BUZZ_MOD_DIVISOR = 5;
 
+    /**
+     * Returns a {@code "Fizz"} {@code "Buzz"} or {@code "FizzBuzz"} String depending on the given input
+     * <ul>
+     *     <li>"Fizz" when input is multiple of 3</li>
+     *     <li>"Buzz" when input is multiple of 5</li>
+     *     <li>"FizzBuzz" when input is multiple of 3 and 5</li>
+     *     <li>Empty string if no condition is met. 0 is considered not meeting previous condition</li>
+     * </ul>
+     *
+     * @param input Provided input
+     * @return The generated result
+     */
     public String fizzBuzz(int input) {
         StringBuilder resultBuilder = new StringBuilder(EMPTY_STRING_DEFAULT_VALUE);
 
