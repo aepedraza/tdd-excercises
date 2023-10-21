@@ -60,4 +60,11 @@ class FizzBuzzCalculatorTest {
     void givenMultipleOrThreeAndFive_thenReturnFizzBuzzString(int input) {
         assertEquals(MULTIPLE_OF_3_AND_5_EXPECTED_RESULT, underTest.fizzBuzz(input));
     }
+
+    @ParameterizedTest
+    @DisplayName("Given input not multiple of 3 nor 5, then return default value (empty String)")
+    @ValueSource(ints = { 1, 2, 7, 11, 13, 16, 22, 31, 49, 62 })
+    void givenInputNotMultipleOfThreeNorFive_thenReturnDefaultValue(int input) {
+        assertEquals(DEFAULT_EXPECTED_RESULT, underTest.fizzBuzz(input));
+    }
 }
