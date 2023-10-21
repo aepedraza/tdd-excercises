@@ -1,5 +1,7 @@
 package com.tddexercises.fizzbuzz;
 
+import java.util.function.Predicate;
+
 public class FizzBuzzCalculator {
 
     private static final String EMPTY_STRING_DEFAULT_VALUE = "";
@@ -10,15 +12,17 @@ public class FizzBuzzCalculator {
 
     public String fizzBuzz(int input) {
         StringBuilder resultBuilder = new StringBuilder(EMPTY_STRING_DEFAULT_VALUE);
-        if (matchesFizzCondition(input)) {
-            resultBuilder.append(FIZZ_VALUE);
-        }
 
-        if (matchesBuzzCondition(input)) {
-            resultBuilder.append(BUZZ_VALUE);
-        }
+        appendIfMatchesCondition(this::matchesFizzCondition, input, resultBuilder, FIZZ_VALUE);
+        appendIfMatchesCondition(this::matchesBuzzCondition, input, resultBuilder, BUZZ_VALUE);
 
         return resultBuilder.toString();
+    }
+
+    private void appendIfMatchesCondition(Predicate<Integer> condition, int input, StringBuilder builder, String toAppend) {
+        if (condition.test(input)) {
+            builder.append(toAppend);
+        }
     }
 
     private boolean matchesFizzCondition(int input) {
