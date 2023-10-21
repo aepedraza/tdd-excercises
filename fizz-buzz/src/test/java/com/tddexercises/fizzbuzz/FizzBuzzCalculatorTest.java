@@ -52,4 +52,11 @@ class FizzBuzzCalculatorTest {
     void givenMultipleOfFiveAsInput_thenReturnBuzzString(int input) {
         assertEquals(MULTIPLE_OF_5_EXPECTED_RESULT, underTest.fizzBuzz(input));
     }
+
+    @ParameterizedTest
+    @DisplayName("Given input = 3*5*N (multiple of 3 and 5), then return \"FizzBuzz\"")
+    @ValueSource(ints = { 15, 30, 45, 60, 75 })
+    void givenMultipleOrThreeAndFive_thenReturnFizzBuzzString(int input) {
+        assertEquals("FizzBuzz", underTest.fizzBuzz(input));
+    }
 }
