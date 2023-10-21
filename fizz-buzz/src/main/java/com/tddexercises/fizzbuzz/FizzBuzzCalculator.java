@@ -9,15 +9,16 @@ public class FizzBuzzCalculator {
     private static final int BUZZ_MOD_DIVISOR = 5;
 
     public String fizzBuzz(int input) {
+        StringBuilder resultBuilder = new StringBuilder(EMPTY_STRING_DEFAULT_VALUE);
         if (matchesFizzCondition(input)) {
-            return FIZZ_VALUE;
+            resultBuilder.append(FIZZ_VALUE);
         }
 
         if (matchesBuzzCondition(input)) {
-            return BUZZ_VALUE;
+            resultBuilder.append(BUZZ_VALUE);
         }
 
-        return EMPTY_STRING_DEFAULT_VALUE;
+        return resultBuilder.toString();
     }
 
     private boolean matchesFizzCondition(int input) {
