@@ -10,6 +10,10 @@ public class FizzBuzzCalculator {
             return FIZZ_VALUE;
         }
 
+        if (input == 5) {
+            return "Buzz";
+        }
+
         return EMPTY_STRING_DEFAULT_VALUE;
     }
 
