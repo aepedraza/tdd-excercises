@@ -9,6 +9,7 @@ class FizzBuzzCalculatorTest {
 
     private static final String DEFAULT_EXPECTED_RESULT = "";
     private static final String MULTIPLE_OF_3_EXPECTED_RESULT = "Fizz";
+    private static final String MULTIPLE_OF_5_EXPECTED_RESULT = "Buzz";
 
     private final FizzBuzzCalculator underTest = new FizzBuzzCalculator();
 
@@ -41,6 +42,6 @@ class FizzBuzzCalculatorTest {
     void givenFiveAsInput_thenReturnBuzzString() {
         String result = underTest.fizzBuzz(5);
 
-        assertEquals("Buzz", result);
+        assertEquals(MULTIPLE_OF_5_EXPECTED_RESULT, result);
     }
 }
