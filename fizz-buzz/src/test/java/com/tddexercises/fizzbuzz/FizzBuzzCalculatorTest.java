@@ -35,4 +35,12 @@ class FizzBuzzCalculatorTest {
             assertEquals(MULTIPLE_OF_3_EXPECTED_RESULT, underTest.fizzBuzz(input));
         }
     }
+
+    @Test
+    @DisplayName("Given input = 5, then return \"Buzz\"")
+    void givenFiveAsInput_thenReturnBuzzString() {
+        String result = underTest.fizzBuzz(5);
+
+        assertEquals("Buzz", result);
+    }
 }
