@@ -12,6 +12,7 @@ class FizzBuzzCalculatorTest {
     private static final String DEFAULT_EXPECTED_RESULT = "";
     private static final String MULTIPLE_OF_3_EXPECTED_RESULT = "Fizz";
     private static final String MULTIPLE_OF_5_EXPECTED_RESULT = "Buzz";
+    private static final String MULTIPLE_OF_3_AND_5_EXPECTED_RESULT = "FizzBuzz";
 
     private final FizzBuzzCalculator underTest = new FizzBuzzCalculator();
 
@@ -33,7 +34,7 @@ class FizzBuzzCalculatorTest {
 
     @ParameterizedTest
     @DisplayName("Given input = 3N (multiple of 3), then return \"Fizz\"")
-    @ValueSource(ints = { 3, 6, 9, 12, 18, 21, 24, 27, 30, 33 })
+    @ValueSource(ints = { 3, 6, 9, 12, 18, 21, 24, 27, 33, 36 })
     void givenMultipleOfThreeAsInput_thenReturnFizzString(int input) {
         assertEquals(MULTIPLE_OF_3_EXPECTED_RESULT, underTest.fizzBuzz(input));
     }
@@ -57,6 +58,6 @@ class FizzBuzzCalculatorTest {
     @DisplayName("Given input = 3*5*N (multiple of 3 and 5), then return \"FizzBuzz\"")
     @ValueSource(ints = { 15, 30, 45, 60, 75 })
     void givenMultipleOrThreeAndFive_thenReturnFizzBuzzString(int input) {
-        assertEquals("FizzBuzz", underTest.fizzBuzz(input));
+        assertEquals(MULTIPLE_OF_3_AND_5_EXPECTED_RESULT, underTest.fizzBuzz(input));
     }
 }
