@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FizzBuzzCalculatorTest {
 
-    private static final String DEFAULT_EXPECTED_RESULT = "";
     private static final String MULTIPLE_OF_3_EXPECTED_RESULT = "Fizz";
     private static final String MULTIPLE_OF_5_EXPECTED_RESULT = "Buzz";
     private static final String MULTIPLE_OF_3_AND_5_EXPECTED_RESULT = "FizzBuzz";
@@ -19,9 +18,7 @@ class FizzBuzzCalculatorTest {
     @Test
     @DisplayName("Given input = 0, then return empty string")
     void givenZeroAsInput_thenReturnEmptyString() {
-        String result = underTest.fizzBuzz(0);
-
-        assertEquals(DEFAULT_EXPECTED_RESULT, result);
+        assertEquals("0", underTest.fizzBuzz(0));
     }
 
     @Test
@@ -65,6 +62,6 @@ class FizzBuzzCalculatorTest {
     @DisplayName("Given input not multiple of 3 nor 5, then return default value (empty String)")
     @ValueSource(ints = { 1, 2, 7, 11, 13, 16, 22, 31, 49, 62 })
     void givenInputNotMultipleOfThreeNorFive_thenReturnDefaultValue(int input) {
-        assertEquals(DEFAULT_EXPECTED_RESULT, underTest.fizzBuzz(input));
+        assertEquals(Integer.toString(input), underTest.fizzBuzz(input));
     }
 }
