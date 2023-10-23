@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 public class FizzBuzzCalculator {
 
+    private static final int MAX_CAPACITY_REQUIRED = 8;
     private static final String FIZZ_VALUE = "Fizz";
     private static final String BUZZ_VALUE = "Buzz";
     private static final int FIZZ_MOD_DIVISOR = 3;
@@ -22,7 +23,7 @@ public class FizzBuzzCalculator {
      * @return The generated result
      */
     public String fizzBuzz(int input) {
-        StringBuilder resultBuilder = new StringBuilder();
+        StringBuilder resultBuilder = new StringBuilder(MAX_CAPACITY_REQUIRED);
 
         appendIfMatchesCondition(this::matchesFizzCondition, input, resultBuilder, FIZZ_VALUE);
         appendIfMatchesCondition(this::matchesBuzzCondition, input, resultBuilder, BUZZ_VALUE);
