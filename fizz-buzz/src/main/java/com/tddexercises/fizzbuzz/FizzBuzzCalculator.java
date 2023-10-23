@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 public class FizzBuzzCalculator {
 
-    private static final String EMPTY_STRING_DEFAULT_VALUE = "";
+    private static final int MAX_CAPACITY_REQUIRED = 8;
     private static final String FIZZ_VALUE = "Fizz";
     private static final String BUZZ_VALUE = "Buzz";
     private static final int FIZZ_MOD_DIVISOR = 3;
@@ -16,19 +16,19 @@ public class FizzBuzzCalculator {
      *     <li>"Fizz" when input is multiple of 3</li>
      *     <li>"Buzz" when input is multiple of 5</li>
      *     <li>"FizzBuzz" when input is multiple of 3 and 5</li>
-     *     <li>Empty string if no condition is met. 0 is considered not meeting previous condition</li>
+     *     <li>The number as String if no condition is met. 0 is considered not meeting previous condition</li>
      * </ul>
      *
      * @param input Provided input
      * @return The generated result
      */
     public String fizzBuzz(int input) {
-        StringBuilder resultBuilder = new StringBuilder(EMPTY_STRING_DEFAULT_VALUE);
+        StringBuilder resultBuilder = new StringBuilder(MAX_CAPACITY_REQUIRED);
 
         appendIfMatchesCondition(this::matchesFizzCondition, input, resultBuilder, FIZZ_VALUE);
         appendIfMatchesCondition(this::matchesBuzzCondition, input, resultBuilder, BUZZ_VALUE);
 
-        return resultBuilder.toString();
+        return !resultBuilder.isEmpty() ? resultBuilder.toString() : Integer.toString(input);
     }
 
     private void appendIfMatchesCondition(Predicate<Integer> condition, int input, StringBuilder builder, String toAppend) {
