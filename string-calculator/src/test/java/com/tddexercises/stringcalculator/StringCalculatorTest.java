@@ -35,4 +35,10 @@ class StringCalculatorTest {
     void givenMultipleNumbersWithSeparator_thenReturnTheirSum() {
         assertEquals(6, underTest.add("1,2,3"));
     }
+
+    @Test
+    @DisplayName("Given input with different separators, then allow and return their sum")
+    void givenInputWithDifferentSeparators_thenAllowAndReturnTheirSum() {
+        assertEquals(30, underTest.add("5,10\n15"));
+    }
 }
