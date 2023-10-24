@@ -5,7 +5,12 @@ public class StringCalculator {
         if (input.isEmpty()) {
             return 0;
         } else {
-            return Integer.parseInt(input);
+            String[] split = input.split(",");
+            if (split.length == 1) {
+                return Integer.parseInt(input);
+            } else {
+                return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
+            }
         }
     }
 }
