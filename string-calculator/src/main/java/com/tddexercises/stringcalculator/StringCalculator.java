@@ -10,6 +10,10 @@ public class StringCalculator {
     private static final int EMPTY_STRING_RESULT = 0;
 
     public int add(String input) {
+        if (input.endsWith(COMMA_SEPARATOR)) {
+            throw new IllegalArgumentException();
+        }
+
         String[] split = input.split(String.join(REGEX_OR_CONDITION, COMMA_SEPARATOR, NEWLINE_SEPARATOR));
 
         if (split.length == 1) {
