@@ -49,9 +49,10 @@ class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> underTest.add("1,\n2"));
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Given input with separator at the end, then throw exception")
-    void givenInputWithInvalidSeparatorAtTheEnd_thenThrowIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> underTest.add("1,2,"));
+    @ValueSource(strings = { "1,2,", "3,5\n" })
+    void givenInputWithInvalidSeparatorAtTheEnd_thenThrowIllegalArgumentException(String input) {
+        assertThrows(IllegalArgumentException.class, () -> underTest.add(input));
     }
 }
