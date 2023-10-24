@@ -1,5 +1,9 @@
 package com.tddexercises.stringcalculator;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class StringCalculator {
 
     private static final int EMPTY_STRING_RESULT = 0;
@@ -11,7 +15,9 @@ public class StringCalculator {
         if (split.length == 1) {
             return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
         } else {
-            return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
+            return Stream.of(split)
+                    .map(Integer::parseInt)
+                    .reduce(0, Integer::sum);
         }
     }
 }
