@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
 
@@ -40,5 +41,11 @@ class StringCalculatorTest {
     @DisplayName("Given input with different separators, then allow and return their sum")
     void givenInputWithDifferentSeparators_thenAllowAndReturnTheirSum() {
         assertEquals(30, underTest.add("5,10\n15"));
+    }
+
+    @Test
+    @DisplayName("Given input with invalid adjacent separators, then throw IllegalArgumentException")
+    void givenInputWithInvalidAdjacentSeparators_thenThrowIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> underTest.add("1,\n2"));
     }
 }
