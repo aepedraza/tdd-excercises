@@ -6,15 +6,12 @@ public class StringCalculator {
     private static final String SEPARATOR = ",";
 
     public int add(String input) {
-        if (input.isEmpty()) {
-            return EMPTY_STRING_RESULT;
+        String[] split = input.split(SEPARATOR);
+
+        if (split.length == 1) {
+            return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
         } else {
-            String[] split = input.split(SEPARATOR);
-            if (split.length == 1) {
-                return Integer.parseInt(input);
-            } else {
-                return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
-            }
+            return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
         }
     }
 }
