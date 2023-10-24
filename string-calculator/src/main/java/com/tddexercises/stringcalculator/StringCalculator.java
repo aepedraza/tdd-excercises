@@ -10,7 +10,7 @@ public class StringCalculator {
     private static final String SEPARATOR = ",";
 
     public int add(String input) {
-        String[] split = input.split(SEPARATOR);
+        String[] split = input.split(SEPARATOR + "|" + "\n");
 
         if (split.length == 1) {
             return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
