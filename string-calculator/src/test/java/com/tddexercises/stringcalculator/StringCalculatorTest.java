@@ -1,14 +1,15 @@
 package com.tddexercises.stringcalculator;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringCalculatorTest {
 
-    private StringCalculator underTest = new StringCalculator();
+    private final StringCalculator underTest = new StringCalculator();
 
     @Test
     void givenEmptyString_thenReturnZero() {
-        Assertions.assertEquals(0, underTest.add(""));
+        assertEquals(0, underTest.add(""));
     }
 }
