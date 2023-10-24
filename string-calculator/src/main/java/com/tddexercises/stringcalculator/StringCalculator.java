@@ -10,9 +10,7 @@ public class StringCalculator {
     private static final int EMPTY_STRING_RESULT = 0;
 
     public int add(String input) {
-        if (input.endsWith(COMMA_SEPARATOR)) {
-            throw new IllegalArgumentException();
-        }
+        validateInput(input);
 
         String[] split = input.split(String.join(REGEX_OR_CONDITION, COMMA_SEPARATOR, NEWLINE_SEPARATOR));
 
@@ -22,6 +20,12 @@ public class StringCalculator {
             return Stream.of(split)
                     .map(Integer::parseInt)
                     .reduce(0, Integer::sum);
+        }
+    }
+
+    private void validateInput(String input) {
+        if (input.endsWith(COMMA_SEPARATOR)) {
+            throw new IllegalArgumentException();
         }
     }
 }
