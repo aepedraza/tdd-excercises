@@ -29,4 +29,10 @@ class StringCalculatorTest {
     void given2NumbersSeparatedByComma_thenReturnTheirSum() {
         assertEquals(3, underTest.add("1,2"));
     }
+
+    @Test
+    @DisplayName("Given multiple numbers separated by comma, then return their sum")
+    void givenMultipleNumbersWithSeparator_thenReturnTheirSum() {
+        assertEquals(6, underTest.add("1,2,3"));
+    }
 }
