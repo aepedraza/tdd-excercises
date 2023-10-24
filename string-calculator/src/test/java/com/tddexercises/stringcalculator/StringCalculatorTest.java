@@ -23,4 +23,10 @@ class StringCalculatorTest {
     void givenSingleNumber_thenReturnSameNumber(String input) {
         assertEquals(Integer.parseInt(input), underTest.add(input));
     }
+
+    @Test
+    @DisplayName("Given 2 numbers separated by comma, then return their sum")
+    void given2NumbersSeparatedByComma_thenReturnTheirSum() {
+        assertEquals(3, underTest.add("1,2"));
+    }
 }
