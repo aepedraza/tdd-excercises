@@ -24,7 +24,7 @@ public class StringCalculator {
     }
 
     private void validateInput(String input) {
-        if (input.endsWith(COMMA_SEPARATOR)) {
+        if (input.endsWith(COMMA_SEPARATOR) || input.endsWith(NEWLINE_SEPARATOR)) {
             throw new IllegalArgumentException();
         }
     }
