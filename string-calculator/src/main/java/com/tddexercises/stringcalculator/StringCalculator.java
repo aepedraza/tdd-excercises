@@ -20,7 +20,7 @@ public class StringCalculator {
         String[] addends = sanitizedInput.split(delimiter);
 
         if (addends.length == 1) {
-            return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
+            return sanitizedInput.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(sanitizedInput);
         } else {
             return Stream.of(addends)
                     .map(Integer::parseInt)
