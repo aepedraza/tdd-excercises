@@ -16,16 +16,8 @@ public class StringCalculator {
 
     public int add(String input) {
         calculateInputAndDelimiter(input);
-
         String[] addends = sanitizedInput.split(delimiter);
-
-        if (addends.length == 1) {
-            return sanitizedInput.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(sanitizedInput);
-        } else {
-            return Stream.of(addends)
-                    .map(Integer::parseInt)
-                    .reduce(0, Integer::sum);
-        }
+        return calculatedSum(addends);
     }
 
     private void calculateInputAndDelimiter(String input) {
@@ -53,6 +45,16 @@ public class StringCalculator {
     private void validateInput(String input) {
         if (input.endsWith(COMMA_SEPARATOR) || input.endsWith(NEWLINE_SEPARATOR)) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private int calculatedSum(String[] addends) {
+        if (addends.length == 1) {
+            return sanitizedInput.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(sanitizedInput);
+        } else {
+            return Stream.of(addends)
+                    .map(Integer::parseInt)
+                    .reduce(0, Integer::sum);
         }
     }
 }
