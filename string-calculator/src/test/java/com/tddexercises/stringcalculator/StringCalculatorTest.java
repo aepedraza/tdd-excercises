@@ -55,4 +55,10 @@ class StringCalculatorTest {
     void givenInputWithInvalidSeparatorAtTheEnd_thenThrowIllegalArgumentException(String input) {
         assertThrows(IllegalArgumentException.class, () -> underTest.add(input));
     }
+
+    @Test
+    @DisplayName("Given input with custom separator defined, then use it")
+    void givenInputWithCustomSeparatorDefined_thenUseCustomSeparator() {
+        assertEquals(4, underTest.add("//;\n1;3"));
+    }
 }
