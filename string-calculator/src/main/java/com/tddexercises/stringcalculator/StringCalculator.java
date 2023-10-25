@@ -10,9 +10,16 @@ public class StringCalculator {
     private static final int EMPTY_STRING_RESULT = 0;
 
     public int add(String input) {
-        validateInput(input);
+        String delimiter;
+        if (inputWithCustomDelimiter(input)) {
+            input = input.substring(input.indexOf("\n") + 1);
+            delimiter = calculateCustomDelimiter(input);
+        } else {
+            validateInput(input);
+            delimiter = String.join(REGEX_OR_CONDITION, COMMA_SEPARATOR, NEWLINE_SEPARATOR);
+        }
 
-        String[] split = input.split(String.join(REGEX_OR_CONDITION, COMMA_SEPARATOR, NEWLINE_SEPARATOR));
+        String[] split = input.split(delimiter);
 
         if (split.length == 1) {
             return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
@@ -21,6 +28,14 @@ public class StringCalculator {
                     .map(Integer::parseInt)
                     .reduce(0, Integer::sum);
         }
+    }
+
+    private boolean inputWithCustomDelimiter(String input) {
+        return input.matches("//.+\\n.+");
+    }
+
+    private String calculateCustomDelimiter(String input) {
+        return ";";
     }
 
     private void validateInput(String input) {
