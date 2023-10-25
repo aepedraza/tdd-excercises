@@ -1,5 +1,6 @@
 package com.tddexercises.stringcalculator;
 
+import java.util.Spliterator;
 import java.util.stream.Stream;
 
 public class StringCalculator {
@@ -43,7 +44,10 @@ public class StringCalculator {
     }
 
     private String calculateCustomDelimiter(String input) {
-        return ";";
+        String separator = input.substring(2, input.indexOf("\n"));
+        // TODO: 25/10/2023 Sanitize regex special characters
+        separator = separator.replaceAll("\\|", "\\\\|");
+        return separator;
     }
 
     private void validateInput(String input) {
