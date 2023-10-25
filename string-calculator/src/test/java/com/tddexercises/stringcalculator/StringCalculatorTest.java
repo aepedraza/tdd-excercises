@@ -3,10 +3,15 @@ package com.tddexercises.stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.params.provider.Arguments.*;
 
 class StringCalculatorTest {
 
@@ -56,9 +61,18 @@ class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> underTest.add(input));
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Given input with custom separator defined, then use it")
-    void givenInputWithCustomSeparatorDefined_thenUseCustomSeparator() {
-        assertEquals(4, underTest.add("//;\n1;3"));
+    @MethodSource("customSeparatorInputAndExpectedProvider")
+    void givenInputWithCustomSeparatorDefined_thenUseCustomSeparator(int expected, String input) {
+        assertEquals(expected, underTest.add(input));
+    }
+
+    static Stream<Arguments> customSeparatorInputAndExpectedProvider() {
+        return Stream.of(
+                arguments(4, "//;\n1;3"),
+                arguments(6, "//|\n1|2|3"),
+                arguments(7, "//sep\n2sep5")
+        );
     }
 }
