@@ -7,26 +7,34 @@ public class StringCalculator {
     private static final String COMMA_SEPARATOR = ",";
     private static final String NEWLINE_SEPARATOR = "\n";
     private static final String REGEX_OR_CONDITION = "|";
+    private static final String DEFAULT_SEPARATOR = String.join(REGEX_OR_CONDITION, COMMA_SEPARATOR, NEWLINE_SEPARATOR);
     private static final int EMPTY_STRING_RESULT = 0;
 
+    private String delimiter;
+    private String sanitizedInput;
+
     public int add(String input) {
-        String delimiter;
+        calculateInputAndDelimiter(input);
+
+        String[] addends = sanitizedInput.split(delimiter);
+
+        if (addends.length == 1) {
+            return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
+        } else {
+            return Stream.of(addends)
+                    .map(Integer::parseInt)
+                    .reduce(0, Integer::sum);
+        }
+    }
+
+    private void calculateInputAndDelimiter(String input) {
         if (inputWithCustomDelimiter(input)) {
-            input = input.substring(input.indexOf("\n") + 1);
+            sanitizedInput = input.substring(input.indexOf("\n") + 1);
             delimiter = calculateCustomDelimiter(input);
         } else {
             validateInput(input);
-            delimiter = String.join(REGEX_OR_CONDITION, COMMA_SEPARATOR, NEWLINE_SEPARATOR);
-        }
-
-        String[] split = input.split(delimiter);
-
-        if (split.length == 1) {
-            return input.isEmpty() ? EMPTY_STRING_RESULT : Integer.parseInt(input);
-        } else {
-            return Stream.of(split)
-                    .map(Integer::parseInt)
-                    .reduce(0, Integer::sum);
+            sanitizedInput = input;
+            delimiter = DEFAULT_SEPARATOR;
         }
     }
 
