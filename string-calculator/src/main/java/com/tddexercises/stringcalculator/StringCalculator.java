@@ -40,7 +40,7 @@ public class StringCalculator {
     }
 
     private boolean inputWithCustomDelimiter(String input) {
-        return input.matches("//.+\\n.+");
+        return input.startsWith("//");
     }
 
     private String calculateCustomDelimiter(String input) {
