@@ -45,8 +45,30 @@ public class StringCalculator {
     private void validateSanitizedInput() {
         String validInputRegex = "(\\d" + delimiter + ")+\\d";
         if (!sanitizedInput.matches(validInputRegex)) {
-            throw new InvalidInputException();
+            String message = getExceptionMessage();
+            throw new InvalidInputException(message);
         }
+    }
+
+    private String getExceptionMessage() {
+        String invalidDelimiter = getInvalidDelimiter();
+        int invalidDelimiterPosition = getInvalidDelimiterPosition(invalidDelimiter);
+        return String.format("'%s' expected but '%s' found at position %d.",
+                unescapedDelimiter(), invalidDelimiter, invalidDelimiterPosition);
+    }
+
+    private String getInvalidDelimiter() {
+        return sanitizedInput
+                .replaceAll("\\d", "")
+                .replaceAll(delimiter, "");
+    }
+
+    private int getInvalidDelimiterPosition(String invalidDelimiter) {
+        return sanitizedInput.indexOf(invalidDelimiter);
+    }
+
+    private String unescapedDelimiter() {
+        return delimiter.replaceAll("\\\\", "");
     }
 
     private void validateInput(String input) {
