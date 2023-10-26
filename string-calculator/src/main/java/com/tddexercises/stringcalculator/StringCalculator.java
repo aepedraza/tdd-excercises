@@ -4,6 +4,8 @@ import java.util.stream.Stream;
 
 public class StringCalculator {
 
+    // TODO: 25/10/2023 Clean code with helpers, utils and delegate classes
+
     private static final String COMMA_SEPARATOR = ",";
     private static final String NEWLINE_SEPARATOR = "\n";
     private static final String REGEX_OR_CONDITION = "|";
