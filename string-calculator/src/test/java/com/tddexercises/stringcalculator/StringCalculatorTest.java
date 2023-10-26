@@ -75,4 +75,10 @@ class StringCalculatorTest {
                 arguments(7, "//sep\n2sep5")
         );
     }
+
+    @Test
+    @DisplayName("Given Invalid Input with custom delimiter, then throw InvalidInputException")
+    void givenInvalidInputWithCustomDelimiter_thenThrowInvalidInputException() {
+        assertThrows(InvalidInputException.class, () -> underTest.add("//|\n1|2,3"));
+    }
 }
